@@ -66,17 +66,17 @@ select
 select * from vehicles v
 where not exists (
   select *
-  from bookings b where b.vehicles_id = v.vehicles_id
+  from bookings b where b.vehicle_id = v.vehicle_id
 )
 
 -- Task 3
 
 select * from vehicles
-where availability_status = 'available' and type = 'car'
+where status = 'available' and type = 'car'
 
 -- Task 4
 
-select vehicles_name, count(*) as booking_count
-from vehicles v inner join bookings b on b.vehicles_id = v.vehicles_id
-group by vehicles_name
+select v.name as vehicle_name, count(*) as total_booking
+from vehicles v inner join bookings b on b.vehicle_id = v.vehicle_id
+group by v.vehicle_id, v.name  
 having count(*) > 2
