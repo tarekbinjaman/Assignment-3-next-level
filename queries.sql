@@ -52,7 +52,14 @@ select * from bookings
 
 -- Task 1
   
-select name as user_name, vehicles_name from users u inner join bookings b on u.user_id = b.user_id inner join vehicles v on b.vehicles_id = v.vehicles_id 
+select 
+  b.booking_id,
+  u.name as customer_name,
+  v.name as vehicle_name,
+  b.start_date,
+  b.end_date,
+  b.status
+  from users u inner join bookings b on u.user_id = b.user_id inner join vehicles v on b.vehicle_id = v.vehicle_id 
 
 -- Task 2
 
